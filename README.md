@@ -11,6 +11,24 @@ Some features and ideas
 - Built in google lens to scan hand written lists
 - Settings page to alter size of list items and maybe a bit of customisation.
 
+## Requirements and build tips
+
+### Android
+- Java JDK 11+
+
+### iOS
+- Homebrew
+- XCode
+  
+When building the app for iOS, if you get an error about glog check if Xcode is pointing at the right file and 
+update with the following commands if not
+
+```bash
+xcode-select -p
+
+sudo xcode-select --switch /Applications/Xcode.app
+```
+
 ### Libraries used
 - React Native Elements - https://reactnativeelements.com/docs/
 - React Navigation - https://reactnavigation.org/docs/getting-started/
