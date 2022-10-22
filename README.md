@@ -19,9 +19,14 @@ Some features and ideas
 ### iOS
 - Homebrew
 - XCode
+
+To update after installing new packages run the following command   
+```
+npx pod-install ios
+```
   
 When building the app for iOS, if you get an error about glog check if Xcode is pointing at the right file and 
-update with the following commands if not
+update with the following commands if not   
 
 ```bash
 xcode-select -p
@@ -34,3 +39,10 @@ sudo xcode-select --switch /Applications/Xcode.app
 - React Navigation - https://reactnavigation.org/docs/getting-started/
 - Expo - https://docs.expo.dev/versions/latest/
 - Tailwind CSS/NativeWind - https://www.nativewind.dev/
+- TypeORM - https://typeorm.io/
+
+
+### To do
+Update to Typescript - https://reactnative.dev/docs/typescript
+Implement SQLite and an ORM - https://dev.to/vinipachecov/setup-typeorm-with-react-native-50c4
+
