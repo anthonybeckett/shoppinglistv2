@@ -46,3 +46,5 @@ sudo xcode-select --switch /Applications/Xcode.app
 Update to Typescript - https://reactnative.dev/docs/typescript
 Implement SQLite and an ORM - https://dev.to/vinipachecov/setup-typeorm-with-react-native-50c4
 
+React Native TyeOrm Example - https://github.com/typeorm/react-native-example
+
