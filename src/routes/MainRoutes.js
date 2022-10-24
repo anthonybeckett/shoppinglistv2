@@ -1,0 +1,62 @@
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import HomeScreen from "../screens/HomeScreen";
+import HomeNavigationIcons from "../components/Routes/HomeNavigationIcons";
+import AddShoppingList from "../screens/AddShoppingList";
+import ShoppingListNavigationIcons from "../components/Routes/ShoppingListNavigationIcons";
+import Settings from "../screens/Settings";
+// import ImportTextList from "../screens/ImportTextList";
+// import ShoppingList from "../screens/ShoppingList";
+
+const Stack = createNativeStackNavigator();
+
+const MainRoutes = () => {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="Home" headerMode="screen">
+				<Stack.Screen
+					name="Home"
+					component={HomeScreen}
+					options={options.home}
+				/>
+				<Stack.Screen
+					name="AddShoppingList"
+					component={AddShoppingList}
+					options={{ title: "New List" }}
+				/>
+				{/* <Stack.Screen
+					name="ShoppingList"
+					component={ShoppingList}
+					options={options.shoppingList}
+					listeners={{ focus: (e) => {} }}
+				/>
+				
+				<Stack.Screen
+					name="ImportTextList"
+					component={ImportTextList}
+					options={{ title: "Import List" }}
+				/> */}
+				{/* <Stack.Screen
+					name="Settings"
+					component={Settings}
+					options={{ title: "Settings" }}
+				/> */}
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+};
+
+const options = {
+	home: ({ navigation, route }) => ({
+		title: "Shopping List",
+		headerRight: () => <HomeNavigationIcons navigation={navigation} />,
+	}),
+	shoppingList: ({ navigation, route }) => ({
+		title: "Shopping List",
+		headerRight: () => <ShoppingListNavigationIcons />,
+	}),
+};
+
+export default MainRoutes;

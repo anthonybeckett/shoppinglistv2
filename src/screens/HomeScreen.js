@@ -4,7 +4,7 @@ import { ListItem, Icon } from "@rneui/themed";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-import Delete from "../../components/Swipeable/Delete";
+import Delete from "../components/Swipeable/Delete";
 
 const HomeScreen = ({ navigation }) => {
 	return (
