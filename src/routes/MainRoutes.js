@@ -6,9 +6,10 @@ import HomeScreen from "../screens/HomeScreen";
 import HomeNavigationIcons from "../components/Routes/HomeNavigationIcons";
 import AddShoppingList from "../screens/AddShoppingList";
 import ShoppingListNavigationIcons from "../components/Routes/ShoppingListNavigationIcons";
+import ImportTextList from "../screens/ImportTextList";
+import ShoppingList from "../screens/ShoppingList";
+
 import Settings from "../screens/Settings";
-// import ImportTextList from "../screens/ImportTextList";
-// import ShoppingList from "../screens/ShoppingList";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,18 +27,17 @@ const MainRoutes = () => {
 					component={AddShoppingList}
 					options={{ title: "New List" }}
 				/>
-				{/* <Stack.Screen
+				<Stack.Screen
 					name="ShoppingList"
 					component={ShoppingList}
 					options={options.shoppingList}
 					listeners={{ focus: (e) => {} }}
 				/>
-				
 				<Stack.Screen
 					name="ImportTextList"
 					component={ImportTextList}
 					options={{ title: "Import List" }}
-				/> */}
+				/>
 				{/* <Stack.Screen
 					name="Settings"
 					component={Settings}

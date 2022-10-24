@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-import DraggableFlatList from "react-native-draggable-flatlist";
+//import DraggableFlatList from "react-native-draggable-flatlist";
 
 const ShoppingList = ({ route, navigation }) => {
 	const [shoppingItems, setShoppingItems] = useState([]);
@@ -55,12 +55,12 @@ const ShoppingList = ({ route, navigation }) => {
 
 	return (
 		<View style={styles.flatListContainer}>
-			<DraggableFlatList
+			{/* <DraggableFlatList
 				data={shoppingItems}
 				renderItem={renderItem}
 				keyExtractor={(item, index) => index.toString()}
 				onDragEnd={({ data }) => updateShoppingItems(data)}
-			/>
+			/> */}
 		</View>
 	);
 };
