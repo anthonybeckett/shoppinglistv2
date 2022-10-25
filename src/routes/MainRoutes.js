@@ -50,7 +50,7 @@ const MainRoutes = () => {
 
 const options = {
 	home: ({ navigation, route }) => ({
-		title: "Shopping List",
+		title: "Shopping Lists",
 		headerRight: () => <HomeNavigationIcons navigation={navigation} />,
 	}),
 	shoppingList: ({ navigation, route }) => ({

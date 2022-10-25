@@ -3,8 +3,14 @@ import { StyleSheet, View } from "react-native";
 import { Input, Button, Icon } from "@rneui/themed";
 import { Formik } from "formik";
 
+import AddShoppingListService from "../services/addShoppingListService";
+
 const createShoppingList = (navigation, name) => {
-	shoppingList.create(name);
+	if (name) {
+		const addShoppingListService = new AddShoppingListService();
+		addShoppingListService.create(name);
+	}
+
 	navigation.goBack();
 };
 

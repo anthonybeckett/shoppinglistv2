@@ -1,16 +1,23 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { HomeList } from "../entities/HomeList";
+import { HomeListEntity } from "../entities/HomeListEntity";
 
-const database = new DataSource({
+const dataSource = new DataSource({
 	type: "react-native",
 	database: "shopping_list",
 	location: "default",
 	logging: ["error", "query", "schema"],
 	synchronize: true,
-	entities: [HomeList],
+	entities: [HomeListEntity],
 	migrations: [],
 	subscribers: [],
 });
 
-export default database;
+export const connectDataSource = () => {
+	dataSource
+		.initialize()
+		.then(() => console.log("Data source has been initialised"))
+		.catch((err) =>
+			console.error(`Data source initialisation failed: ${err}`)
+		);
+};

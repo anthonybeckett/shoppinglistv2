@@ -1,8 +1,9 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native";
+import { Icon } from "@rneui/base";
 
-const Delete = ({ title = "Delete", onPress = null }) => {
+const Delete = ({ name = "delete", onPress = null }) => {
 	return (
 		<TouchableOpacity
 			style={{
@@ -13,7 +14,7 @@ const Delete = ({ title = "Delete", onPress = null }) => {
 			}}
 			onPress={() => onPress}
 		>
-			<Text>{title}</Text>
+			<Icon name={name} color="white" />
 		</TouchableOpacity>
 	);
 };
