@@ -1,8 +1,8 @@
-import { Entity, PrimaryColumn, Column, BaseEntity } from "typeorm";
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity("homelist")
 export class HomeListEntity extends BaseEntity {
-	@PrimaryColumn()
+	@PrimaryGeneratedColumn()
 	id: number;
 
 	@Column()

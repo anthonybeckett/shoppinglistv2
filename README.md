@@ -13,6 +13,12 @@ Some features and ideas
 
 ## Requirements and build tips
 
+### Generating migrations
+To generate migrations based on changes in the entity files run the following command
+```
+npx typeorm-ts-node-commonjs migration:generate ./src/migrations/migration -td ./src/config/database.ts
+```
+
 ### Android
 - Java JDK 11+
 
