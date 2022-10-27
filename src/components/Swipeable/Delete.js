@@ -12,7 +12,7 @@ const Delete = ({ name = "delete", onPress = null }) => {
 				alignItems: "center",
 				justifyContent: "center",
 			}}
-			onPress={() => onPress}
+			onPress={onPress}
 		>
 			<Icon name={name} color="white" />
 		</TouchableOpacity>

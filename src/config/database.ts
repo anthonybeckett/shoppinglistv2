@@ -20,3 +20,7 @@ export const connectDataSource = () => {
 			console.error(`Data source initialisation failed: ${err}`)
 		);
 };
+
+export const cdb2 = async () => {
+	await dataSource.initialize();
+};

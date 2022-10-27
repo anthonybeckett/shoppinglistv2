@@ -14,4 +14,9 @@ export default class HomeListService {
 		this.homeListEntity.name = name;
 		return await this.homeListEntity.save();
 	}
+
+	async destroy(id) {
+		const listItem = await HomeListEntity.findOneBy({ id: id });
+		await listItem.remove();
+	}
 }
