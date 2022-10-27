@@ -3,12 +3,12 @@ import { StyleSheet, View } from "react-native";
 import { Input, Button, Icon } from "@rneui/themed";
 import { Formik } from "formik";
 
-import AddShoppingListService from "../services/addShoppingListService";
+import HomeListService from "../services/HomeListService";
 
-const createShoppingList = (navigation, name) => {
+const createShoppingList = async (navigation, name) => {
 	if (name) {
-		const addShoppingListService = new AddShoppingListService();
-		addShoppingListService.create(name);
+		const homeListService = new HomeListService();
+		await homeListService.create(name);
 	}
 
 	navigation.goBack();

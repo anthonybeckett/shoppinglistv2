@@ -1,16 +1,17 @@
 import { HomeListEntity } from "../entities/HomeListEntity";
-import { database } from "../config/database";
 
-export default class AddShoppingListService {
-	create(name) {
+export default class HomeListService {
+	async fetchAll() {
+		return await HomeListEntity.find();
+	}
+
+	async create(name) {
 		if (name === "") {
 			throw "Name parameter cannot be null";
 		}
 
 		this.homeListEntity = new HomeListEntity();
 		this.homeListEntity.name = name;
-		this.homeListEntity.save();
-
-		return true;
+		return await this.homeListEntity.save();
 	}
 }
