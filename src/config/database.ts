@@ -8,8 +8,6 @@ export const dataSource = new DataSource({
 	location: "default",
 	logging: ["error", "query", "schema"],
 	entities: [HomeListEntity],
-	migrations: [],
-	subscribers: [],
 });
 
 export const connectDataSource = () => {
@@ -19,8 +17,4 @@ export const connectDataSource = () => {
 		.catch((err) =>
 			console.error(`Data source initialisation failed: ${err}`)
 		);
-};
-
-export const cdb2 = async () => {
-	await dataSource.initialize();
 };

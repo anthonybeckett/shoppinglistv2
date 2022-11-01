@@ -1,0 +1,9 @@
+class {{ class }}{
+    static up(){
+        //
+    }
+
+    static down(){
+        //
+    }
+}
