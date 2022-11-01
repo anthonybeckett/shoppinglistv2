@@ -1,9 +1,15 @@
-class {{ class }}{
-    static up(){
-        //
+import { Migration } from '../helpers/database/Migration';
+
+class {{ class }} extends Migration{
+    async static up(){
+        await queryRunner.query(
+            //''
+        );
     }
 
-    static down(){
-        //
+    async static down(){
+        await queryRunner.query(
+            //''
+        );
     }
 }
