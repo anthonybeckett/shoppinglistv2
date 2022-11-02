@@ -1,15 +1,9 @@
-import { Migration } from '../helpers/database/Migration';
+import { dataSource } from '../config/database';
 
-class {{ class }} extends Migration{
+class {{ class }} {
     async static up(){
-        await queryRunner.query(
-            //''
-        );
-    }
-
-    async static down(){
-        await queryRunner.query(
-            //''
+        const migrationsCheck = await dataSource.manager.query(
+            //
         );
     }
 }

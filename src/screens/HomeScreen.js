@@ -32,7 +32,7 @@ const HomeScreen = ({ navigation }) => {
 			});
 
 			getListItems();
-		}, 250);
+		}, 500);
 	}, []);
 
 	return (
