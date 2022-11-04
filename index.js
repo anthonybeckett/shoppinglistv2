@@ -4,6 +4,5 @@ import MainRoutes from "./src/routes/MainRoutes";
 import { connectDataSource, runMigrations } from "./src/config/database";
 
 connectDataSource();
-// setTimeout(runMigrations, 1000);
 
 AppRegistry.registerComponent(appName, () => MainRoutes);

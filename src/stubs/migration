@@ -1,9 +1,0 @@
-import { dataSource } from '../config/database';
-
-class {{ class }} {
-    async static up(){
-        const migrationsCheck = await dataSource.manager.query(
-            //
-        );
-    }
-}
