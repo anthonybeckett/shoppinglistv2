@@ -8,6 +8,7 @@ import AddShoppingList from "../screens/AddShoppingList";
 import ShoppingListNavigationIcons from "../components/Routes/ShoppingListNavigationIcons";
 import ImportTextList from "../screens/ImportTextList";
 import ShoppingList from "../screens/ShoppingList";
+import Initialisation from "../screens/Initialisation";
 
 import Settings from "../screens/Settings";
 
@@ -16,7 +17,14 @@ const Stack = createNativeStackNavigator();
 const MainRoutes = () => {
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Home" headerMode="screen">
+			<Stack.Navigator
+				initialRouteName="Initialisation"
+				headerMode="screen"
+			>
+				<Stack.Screen
+					name="Initialisation"
+					component={Initialisation}
+				/>
 				<Stack.Screen
 					name="Home"
 					component={HomeScreen}
@@ -51,6 +59,7 @@ const MainRoutes = () => {
 const options = {
 	home: ({ navigation, route }) => ({
 		title: "Shopping Lists",
+		headerBackVisible: false,
 		headerRight: () => <HomeNavigationIcons navigation={navigation} />,
 	}),
 	shoppingList: ({ navigation, route }) => ({
