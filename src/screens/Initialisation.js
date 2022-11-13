@@ -1,10 +1,16 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-import { runMigrations } from "../config/database";
+import { dataSource, runMigrations } from "../config/database";
 
 const Initialisation = ({ navigation }) => {
-	runMigrations(navigation);
+	const initialiseApp = () => {
+		!dataSource.isInitialized
+			? setTimeout(() => initialiseApp(), 500)
+			: runMigrations(navigation);
+	};
+
+	initialiseApp();
 
 	return (
 		<View>

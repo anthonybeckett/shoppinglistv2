@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { ScrollView } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 import Swipeable from "react-native-gesture-handler/Swipeable";
@@ -24,15 +24,10 @@ const HomeScreen = ({ navigation }) => {
 		setListItems(await homeListService.fetchAll());
 	};
 
-	useLayoutEffect(() => {
-		// This gives a little delay to get the database initalised
-		setTimeout(() => {
-			navigation.addListener("focus", () => {
-				getListItems();
-			});
-
+	useEffect(() => {
+		navigation.addListener("focus", () => {
 			getListItems();
-		}, 500);
+		});
 	}, []);
 
 	return (
