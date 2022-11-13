@@ -13,10 +13,23 @@ const Initialisation = ({ navigation }) => {
 	initialiseApp();
 
 	return (
-		<View>
-			<Text>Loading...</Text>
+		<View style={styles.container}>
+			<Text style={styles.loading}>Loading...</Text>
 		</View>
 	);
 };
 
 export default Initialisation;
+
+const styles = StyleSheet.create({
+	container: {
+		height: "100%",
+	},
+	loading: {
+		textAlign: "center",
+		textAlignVertical: "center",
+		flex: 1,
+		alignItems: "center",
+		justifyContent: "center",
+	},
+});

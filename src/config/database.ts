@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { HomeListEntity } from "../entities/HomeListEntity";
+import { StackActions } from "@react-navigation/native";
 
 export const dataSource = new DataSource({
 	type: "react-native",
@@ -26,5 +27,5 @@ export const runMigrations = async (navigation) => {
 		created_at DATETIME DEFAULT (datetime('now','localtime'))
 	);`);
 
-	await navigation.navigate("Home");
+	await navigation.dispatch(StackActions.replace("Home"));
 };
