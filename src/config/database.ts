@@ -21,7 +21,7 @@ export const connectDataSource = () => {
 };
 
 export const runMigrations = async (navigation) => {
-	await dataSource.manager.query(`CREATE TABLE IF NOT EXISTS homelists (
+	await dataSource.manager.query(`CREATE TABLE IF NOT EXISTS homelist (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		name VARCHAR(100) NOT NULL,
 		created_at DATETIME DEFAULT (datetime('now','localtime'))
