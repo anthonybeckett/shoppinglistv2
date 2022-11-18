@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Button } from "@rneui/base";
 
-const ShoppingListNavigationIcons = ({ navigation }) => {
+const ShoppingListNavigationIcons = ({ navigation, route }) => {
 	return (
 		<View style={styles.btnContainer}>
 			<Button
@@ -19,4 +20,8 @@ const ShoppingListNavigationIcons = ({ navigation }) => {
 
 export default ShoppingListNavigationIcons;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	addBtn: {
+		backgroundColor: "#fff",
+	},
+});

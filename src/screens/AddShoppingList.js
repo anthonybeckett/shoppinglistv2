@@ -4,20 +4,21 @@ import { Input, Button, Icon } from "@rneui/themed";
 import { Formik } from "formik";
 
 import HomeListService from "../services/HomeListService";
-
-const createShoppingList = async (navigation, name) => {
-	if (name) {
-		const homeListService = new HomeListService();
-		await homeListService.create(name);
-	}
-
-	navigation.goBack();
-};
+import moment from "moment";
 
 const AddShoppingList = ({ navigation }) => {
+	const createShoppingList = async (navigation, name) => {
+		if (name) {
+			const homeListService = new HomeListService();
+			await homeListService.create(name);
+		}
+
+		navigation.goBack();
+	};
+
 	return (
 		<Formik
-			initialValues={{ name: "" }}
+			initialValues={{ name: moment().format("Mo MMMM YYYY") }}
 			onSubmit={(values) => createShoppingList(navigation, values.name)}
 		>
 			{({ handleChange, handleBlur, handleSubmit, values }) => (

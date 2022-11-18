@@ -5,23 +5,21 @@ import { Formik } from "formik";
 
 const ImportTextList = ({ navigation, route }) => {
 	const parseListAndAdd = (data, seperator = "\n") => {
-		if (data == "") return false;
+		if (data === "") return false;
 
 		let arrData = data.split(seperator);
 
 		if (typeof arrData !== "object") {
-			console.log(typeof arrData, arrData);
-
-			if (seperator == "\n") {
+			if (seperator === "\n") {
 				parseListAndAdd(data, ",");
 			}
 
 			return false;
 		}
 
-		arrData.forEach((item, index) => {
-			shoppingItem.create(route.params.id, item.trim(), index);
-		});
+		// arrData.forEach((item, index) => {
+		// 	shoppingItem.create(route.params.id, item.trim(), index);
+		// });
 
 		navigation.goBack();
 	};

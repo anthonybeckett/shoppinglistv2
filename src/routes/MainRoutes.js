@@ -57,14 +57,19 @@ const MainRoutes = () => {
 };
 
 const options = {
-	home: ({ navigation, route }) => ({
+	home: ({ navigation }) => ({
 		title: "Shopping Lists",
 		headerBackVisible: false,
 		headerRight: () => <HomeNavigationIcons navigation={navigation} />,
 	}),
 	shoppingList: ({ navigation, route }) => ({
 		title: "Shopping List",
-		headerRight: () => <ShoppingListNavigationIcons />,
+		headerRight: () => (
+			<ShoppingListNavigationIcons
+				navigation={navigation}
+				route={route}
+			/>
+		),
 	}),
 };
 

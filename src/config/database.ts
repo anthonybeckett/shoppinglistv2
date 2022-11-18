@@ -20,7 +20,7 @@ export const connectDataSource = () => {
 		);
 };
 
-export const runMigrations = async (navigation) => {
+export const runMigrations = async (navigation: { navigation: object }) => {
 	await dataSource.manager.query(`CREATE TABLE IF NOT EXISTS homelist (
 		id INTEGER PRIMARY KEY AUTOINCREMENT,
 		name VARCHAR(100) NOT NULL,

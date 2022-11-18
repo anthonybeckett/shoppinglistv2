@@ -1,11 +1,5 @@
-import React, { useState, useLayoutEffect, useEffect } from "react";
-import {
-	StyleSheet,
-	ScrollView,
-	Text,
-	TouchableOpacity,
-	View,
-} from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 import Swipeable from "react-native-gesture-handler/Swipeable";
 //import DraggableFlatList from "react-native-draggable-flatlist";
