@@ -18,7 +18,7 @@ const AddShoppingList = ({ navigation }) => {
 
 	return (
 		<Formik
-			initialValues={{ name: moment().format("Mo MMMM YYYY") }}
+			initialValues={{ name: moment().format("Do MMMM YYYY").toString() }}
 			onSubmit={(values) => createShoppingList(navigation, values.name)}
 		>
 			{({ handleChange, handleBlur, handleSubmit, values }) => (

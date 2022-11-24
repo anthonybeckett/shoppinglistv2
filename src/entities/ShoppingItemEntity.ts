@@ -5,8 +5,11 @@ export class ShoppingItemEntity extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column("varchar", { length: 100 })
-	list_id: string;
+	@Column()
+	list_id: number;
+
+	@Column()
+	name: string;
 
 	@Column({
 		default: 0,
@@ -14,5 +17,5 @@ export class ShoppingItemEntity extends BaseEntity {
 	complete: number;
 
 	@Column()
-	order: number;
+	item_order: number;
 }

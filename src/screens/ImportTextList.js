@@ -1,7 +1,8 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Dimensions } from "react-native";
+import { StyleSheet, TextInput, View } from "react-native";
 import { Button } from "@rneui/themed";
 import { Formik } from "formik";
+import ShoppingItemService from "../services/ShoppingItemService";
 
 const ImportTextList = ({ navigation, route }) => {
 	const parseListAndAdd = (data, seperator = "\n") => {
@@ -17,9 +18,15 @@ const ImportTextList = ({ navigation, route }) => {
 			return false;
 		}
 
-		// arrData.forEach((item, index) => {
-		// 	shoppingItem.create(route.params.id, item.trim(), index);
-		// });
+		const shoppingItemService = new ShoppingItemService();
+
+		arrData.forEach(async (item, index) => {
+			await shoppingItemService.create(
+				route.params.id,
+				item.trim(),
+				index
+			);
+		});
 
 		navigation.goBack();
 	};
