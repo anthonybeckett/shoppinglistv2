@@ -22,14 +22,17 @@ export const connectDataSource = () => {
 };
 
 export const runMigrations = async (navigation: { navigation: object }) => {
+	// await dataSource.manager.query(`DROP TABLE homelist`);
+	// await dataSource.manager.query(`DROP TABLE shopping_items`);
+
 	await dataSource.manager.query(`CREATE TABLE IF NOT EXISTS homelist (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 		name VARCHAR(100) NOT NULL,
 		created_at DATETIME DEFAULT (datetime('now','localtime'))
 	);`);
 
 	await dataSource.manager.query(`CREATE TABLE IF NOT EXISTS shopping_items (
-		id INTEGER PRIMARY KEY AUTOINCREMENT,
+		id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 		list_id INTEGER NOT NULL,
 		name VARCHAR(100) NOT NULL,
 		complete INTEGER NOT NULL DEFAULT (0),

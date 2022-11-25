@@ -13,12 +13,6 @@ Some features and ideas
 
 ## Requirements and build tips
 
-### Generating migrations
-To generate migrations based on changes in the entity files run the following command
-```
-npx typeorm-ts-node-commonjs migration:generate ./src/migrations/migration -td ./src/config/database.ts
-```
-
 ### Android
 - Java JDK 11+
 
@@ -46,11 +40,16 @@ sudo xcode-select --switch /Applications/Xcode.app
 - Expo - https://docs.expo.dev/versions/latest/
 - Tailwind CSS/NativeWind - https://www.nativewind.dev/
 - TypeORM - https://typeorm.io/
+- React Native Swipeable Item - https://github.com/computerjazz/react-native-swipeable-item
 
 
 ### To do
-Update to Typescript - https://reactnative.dev/docs/typescript
-Implement SQLite and an ORM - https://dev.to/vinipachecov/setup-typeorm-with-react-native-50c4
-
-React Native TyeOrm Example - https://github.com/typeorm/react-native-example
+- Update .env to set more development/production values
+- Create an .env.example
+- Fix issue with ordering a shopping list as adding more items to a list starts from 0 again.
+- Implement updating shopping list items
+- Maybe try upgrade to typescript again and use ts-syringe to implement dependency injection.
+- Pull screen logic out into custom hooks to make it basically a view only component.
+- Add development settings like refresh the database
+- Improve migration system
 

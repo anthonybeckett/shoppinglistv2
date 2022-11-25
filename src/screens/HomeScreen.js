@@ -20,7 +20,6 @@ const HomeScreen = ({ navigation }) => {
 	};
 
 	const getListItems = async () => {
-		const homeListService = new HomeListService();
 		setListItems(await homeListService.fetchAll());
 	};
 

@@ -1,11 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useLayoutEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 import Swipeable from "react-native-gesture-handler/Swipeable";
-//import DraggableFlatList from "react-native-draggable-flatlist";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import DraggableFlatList from "react-native-draggable-flatlist";
+
+import ShoppingItemService from "../services/ShoppingItemService";
 
 const ShoppingList = ({ route, navigation }) => {
 	const [shoppingItems, setShoppingItems] = useState([]);
+	const shoppingItemService = new ShoppingItemService();
+
+	const getShoppingItems = async () => {
+		const items = await shoppingItemService.fetchByShoppingListId(
+			route.params.id
+		);
+		setShoppingItems(items);
+	};
+
+	const deleteItem = async (id) => {
+		shoppingItemService.destroy(id);
+
+		const newItems = shoppingItems.filter((item) => item.id !== id);
+		setShoppingItems(newItems);
+	};
+
+	useLayoutEffect(() => {
+		navigation.addListener("focus", () => {
+			getShoppingItems();
+		});
+	}, []);
 
 	const renderItem = ({ item, index, drag, isActive }) => (
 		<Swipeable
@@ -28,7 +52,8 @@ const ShoppingList = ({ route, navigation }) => {
 			<ListItem
 				key={item.id}
 				bottomDivider={true}
-				onPress={() => updateShoppingList(item.id)}
+				//onPress={() => updateShoppingList(item.id)}
+				onPress={() => console.log(item)}
 			>
 				<ListItem.Content style={styles.listItemContainer}>
 					<TouchableOpacity onLongPress={drag} delayLongPress={10}>
@@ -48,14 +73,14 @@ const ShoppingList = ({ route, navigation }) => {
 	);
 
 	return (
-		<View style={styles.flatListContainer}>
-			{/* <DraggableFlatList
+		<GestureHandlerRootView>
+			<DraggableFlatList
 				data={shoppingItems}
 				renderItem={renderItem}
 				keyExtractor={(item, index) => index.toString()}
-				onDragEnd={({ data }) => updateShoppingItems(data)}
-			/> */}
-		</View>
+				//onDragEnd={({ data }) => updateShoppingItems(data)}
+			/>
+		</GestureHandlerRootView>
 	);
 };
 
@@ -72,15 +97,11 @@ const styles = StyleSheet.create({
 		textDecorationStyle: "solid",
 	},
 	listItemContainer: {
-		flex: 1,
+		//flex: 1,
 		flexDirection: "row",
 		justifyContent: "flex-start",
 	},
 	sortIcon: {
 		marginRight: 20,
-	},
-	flatListContainer: {
-		flex: 1,
-		flexDirection: "row",
 	},
 });
