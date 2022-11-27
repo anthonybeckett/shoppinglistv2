@@ -44,9 +44,9 @@ sudo xcode-select --switch /Applications/Xcode.app
 
 
 ### To do
+- Fix refresh when adding items to a shopping list then not appearing
 - Update .env to set more development/production values
 - Create an .env.example
-- Fix issue with ordering a shopping list as adding more items to a list starts from 0 again.
 - Implement updating shopping list items
 - Maybe try upgrade to typescript again and use ts-syringe to implement dependency injection.
 - Pull screen logic out into custom hooks to make it basically a view only component.

@@ -31,6 +31,8 @@ const ShoppingList = ({ route, navigation }) => {
 		});
 	}, []);
 
+	console.log(shoppingItems);
+
 	const renderItem = ({ item, index, drag, isActive }) => (
 		<Swipeable
 			key={item.id}

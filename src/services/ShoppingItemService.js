@@ -1,6 +1,12 @@
 import { ShoppingItemEntity } from "../entities/ShoppingItemEntity";
 
 export default class ShoppingItemService {
+	async fetchItemQtyById(shoppingListId) {
+		const results = await this.fetchByShoppingListId(shoppingListId);
+
+		return results.length;
+	}
+
 	async fetchByShoppingListId(shoppingListId) {
 		return await ShoppingItemEntity.findBy({
 			list_id: shoppingListId,

@@ -24,7 +24,7 @@ const ImportTextList = ({ navigation, route }) => {
 			await shoppingItemService.create(
 				route.params.id,
 				item.trim(),
-				index
+				index + route.params.itemQty + 1
 			);
 		});
 
