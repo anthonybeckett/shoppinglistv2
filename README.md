@@ -24,6 +24,16 @@ To update after installing new packages run the following command
 ```
 npx pod-install ios
 ```
+
+If build error are happening with the pod file after installing new packages run the following 
+```
+rm node_modules
+npm i
+cd ios
+pod-install
+cd ..
+npx react-native start-ios
+```
   
 When building the app for iOS, if you get an error about glog check if Xcode is pointing at the right file and 
 update with the following commands if not   
@@ -45,6 +55,7 @@ sudo xcode-select --switch /Applications/Xcode.app
 
 ### To do
 - Fix refresh when adding items to a shopping list then not appearing
+- Fix height of lists to not be 100% to stop going into the user zone at the bottom
 - Update .env to set more development/production values
 - Create an .env.example
 - Implement updating shopping list items
@@ -52,4 +63,6 @@ sudo xcode-select --switch /Applications/Xcode.app
 - Pull screen logic out into custom hooks to make it basically a view only component.
 - Add development settings like refresh the database
 - Improve migration system
+- Implement a Makefile to run build commands and other useful options
+- Implement a new style layout and design
 
