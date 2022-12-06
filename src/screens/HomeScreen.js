@@ -13,7 +13,7 @@ const HomeScreen = ({ navigation }) => {
 	const homeListService = new HomeListService();
 
 	const deleteItem = async (id) => {
-		homeListService.destroy(id);
+		await homeListService.destroy(id);
 
 		const newItems = listItems.filter((item) => item.id !== id);
 		setListItems(newItems);
