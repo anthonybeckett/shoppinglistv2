@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { HomeListEntity } from "../entities/HomeListEntity";
 import { ShoppingItemEntity } from "../entities/ShoppingItemEntity";
-import { StackActions } from "@react-navigation/native";
+import {NavigationProp, StackActions} from "@react-navigation/native";
 
 export const dataSource = new DataSource({
 	type: "react-native",
@@ -21,7 +21,7 @@ export const connectDataSource = () => {
 		);
 };
 
-export const runMigrations = async (navigation: { navigation: object }) => {
+export const runMigrations = async (navigation: NavigationProp<object>) => {
 	// await dataSource.manager.query(`DROP TABLE homelist`);
 	// await dataSource.manager.query(`DROP TABLE shopping_items`);
 
