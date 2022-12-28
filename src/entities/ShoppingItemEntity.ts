@@ -18,4 +18,11 @@ export class ShoppingItemEntity extends BaseEntity {
 
 	@Column()
 	item_order: number;
+
+	static fetchOrderedItemsByShoppingListId(shoppingListId: string){
+		return this.createQueryBuilder()
+			.where("list_id = :shoppingListId", { shoppingListId })
+			.orderBy("complete ASC, item_order")
+			.getMany();
+	}
 }

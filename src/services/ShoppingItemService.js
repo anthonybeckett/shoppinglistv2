@@ -8,9 +8,7 @@ export default class ShoppingItemService {
 	}
 
 	async fetchByShoppingListId(shoppingListId) {
-		return await ShoppingItemEntity.findBy({
-			list_id: shoppingListId,
-		});
+		return await ShoppingItemEntity.fetchOrderedItemsByShoppingListId(shoppingListId);
 	}
 
 	async create(listId, name, order) {
@@ -29,5 +27,11 @@ export default class ShoppingItemService {
 	async destroy(id) {
 		const item = await ShoppingItemEntity.findOneBy({ id: id });
 		await item.remove();
+	}
+
+	async completeItemById(id){
+		const item = await ShoppingItemEntity.findOneBy({ id: id });
+		item.complete = item.complete === 0 ? 1 : 0;
+		await item.save();
 	}
 }

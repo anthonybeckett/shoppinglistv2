@@ -15,8 +15,44 @@ const ShoppingList = ({ route, navigation }) => {
 		const items = await shoppingItemService.fetchByShoppingListId(
 			route.params.id
 		);
+		console.log(items);
 		setShoppingItems(items);
 	};
+
+	const updateItemsOrder = async (items) => {
+		console.log("Re-ordered items");
+		console.log(items);
+	}
+
+	const updateShoppingItem = async (id) => {
+		let itemToUpdate = {};
+
+		// Update database with completed = 1
+		let newList = shoppingItems.map(item => {
+			if(item.id === id){
+				itemToUpdate.id = id;
+				itemToUpdate.complete = !item.complete;
+
+
+				return {...item, complete: !item.complete ? 1 : 0}
+			}
+			return item;
+		});
+
+		//Sort list based on complete status
+		newList.sort((a, b) => a.complete - b.complete);
+
+		//Update order numbers
+		let ordered = newList.map((item, index) => {
+			return {...item, order_items: index}
+		});
+
+		ordered.sort((a, b) => a.order_by > b.order_by);
+
+		setShoppingItems(ordered);
+
+		await shoppingItemService.completeItemById(itemToUpdate.id, itemToUpdate.complete);
+	}
 
 	const deleteItem = async (id) => {
 		shoppingItemService.destroy(id);
@@ -30,8 +66,6 @@ const ShoppingList = ({ route, navigation }) => {
 			getShoppingItems();
 		});
 	}, []);
-
-	console.log(shoppingItems);
 
 	const renderItem = ({ item, index, drag, isActive }) => (
 		<Swipeable
@@ -54,8 +88,7 @@ const ShoppingList = ({ route, navigation }) => {
 			<ListItem
 				key={item.id}
 				bottomDivider={true}
-				//onPress={() => updateShoppingList(item.id)}
-				onPress={() => console.log(item)}
+				onPress={() => updateShoppingItem(item.id)}
 			>
 				<ListItem.Content style={styles.listItemContainer}>
 					<TouchableOpacity onLongPress={drag} delayLongPress={10}>
@@ -80,7 +113,7 @@ const ShoppingList = ({ route, navigation }) => {
 				data={shoppingItems}
 				renderItem={renderItem}
 				keyExtractor={(item, index) => index.toString()}
-				//onDragEnd={({ data }) => updateShoppingItems(data)}
+				onDragEnd={({ data }) => updateItemsOrder(data)}
 			/>
 		</GestureHandlerRootView>
 	);
@@ -99,7 +132,6 @@ const styles = StyleSheet.create({
 		textDecorationStyle: "solid",
 	},
 	listItemContainer: {
-		//flex: 1,
 		flexDirection: "row",
 		justifyContent: "flex-start",
 	},
