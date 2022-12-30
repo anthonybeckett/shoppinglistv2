@@ -65,4 +65,5 @@ sudo xcode-select --switch /Applications/Xcode.app
 - [ ] Implement a Makefile to run build commands and other useful options
 - [ ] Implement a new style layout and design
 - [x] Implement a new icon https://aboutreact.com/react-native-change-app-icon/
+- [ ] Create build commands in Makefile to export APK etc https://medium.com/geekculture/react-native-generate-apk-debug-and-release-apk-4e9981a2ea51
 
