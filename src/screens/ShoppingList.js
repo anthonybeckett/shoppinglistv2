@@ -15,13 +15,17 @@ const ShoppingList = ({ route, navigation }) => {
 		const items = await shoppingItemService.fetchByShoppingListId(
 			route.params.id
 		);
-		console.log(items);
 		setShoppingItems(items);
 	};
 
 	const updateItemsOrder = async (items) => {
-		console.log("Re-ordered items");
-		console.log(items);
+		const newOrder = items.map((item, index) => {
+			return {...item, item_order: index}
+		});
+
+		setShoppingItems(newOrder);
+
+		await shoppingItemService.updateItemsOrderCollection(newOrder);
 	}
 
 	const updateShoppingItem = async (id) => {
@@ -44,14 +48,17 @@ const ShoppingList = ({ route, navigation }) => {
 
 		//Update order numbers
 		let ordered = newList.map((item, index) => {
-			return {...item, order_items: index}
+			return {...item, item_order: index}
 		});
 
-		ordered.sort((a, b) => a.order_by > b.order_by);
+		ordered.sort((a, b) => a.item_order > b.item_order);
 
 		setShoppingItems(ordered);
 
+		// Todo: Switch out for a loop and update order and complete of each item
 		await shoppingItemService.completeItemById(itemToUpdate.id, itemToUpdate.complete);
+
+		await shoppingItemService.updateItemsOrderCollection(ordered);
 	}
 
 	const deleteItem = async (id) => {

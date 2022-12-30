@@ -34,4 +34,15 @@ export default class ShoppingItemService {
 		item.complete = item.complete === 0 ? 1 : 0;
 		await item.save();
 	}
+
+	async updateItemsOrderCollection(items){
+		for (const item of items) {
+			const update = await ShoppingItemEntity.findOneBy({ id: item.id });
+
+			if(update){
+				update.item_order = item.item_order;
+				await update.save();
+			}
+		}
+	}
 }
