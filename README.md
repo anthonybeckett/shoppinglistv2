@@ -58,11 +58,11 @@ sudo xcode-select --switch /Applications/Xcode.app
 - Fix height of lists to not be 100% to stop going into the user zone at the bottom
 - Update .env to set more development/production values
 - Create an .env.example
-- Implement updating shopping list items
 - Maybe try upgrade to typescript again and use ts-syringe to implement dependency injection.
 - Pull screen logic out into custom hooks to make it basically a view only component.
 - Add development settings like refresh the database
 - Improve migration system
 - Implement a Makefile to run build commands and other useful options
 - Implement a new style layout and design
+- Implement a new icon https://aboutreact.com/react-native-change-app-icon/
 
