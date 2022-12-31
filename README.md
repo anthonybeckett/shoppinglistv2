@@ -54,17 +54,17 @@ sudo xcode-select --switch /Applications/Xcode.app
 
 
 ### To-do
-- [ ] Replace "Delete" word with trash icon when swiping right on a shopping item
-- [ ] Fix refresh when adding items to a shopping list then not appearing
-- [ ] Fix bug being able to add empty items to shopping list
-- [ ] Fix sorting issue in shopping list glitching ordering
+- [x] Replace "Delete" word with trash icon when swiping right on a shopping item
+- [x] Fix refresh when adding items to a shopping list then not appearing
+- [x] Fix bug being able to add empty items to shopping list
+- [x] Fix sorting issue in shopping list glitching ordering
 - [ ] Add Show/Hide completed items icon and give each section little heading
-- [ ] Fix text colour when adding items to a shopping menu
-- [ ] Fix height of lists to not be 100% to stop going into the user zone at the bottom
+- [x] Fix text colour when adding items to a shopping menu
+- [x] Fix height of lists to not be 100% to stop going into the user zone at the bottom
 - [ ] Fix issue with completing items having a delay to complete and re-order. (Test turning off SQL logging to console)
 - [ ] Add validation and error messages when trying to add blank shopping lists etc
 - [ ] Update .env to set more development/production values
-- [ ] Create an .env.example
+- [x] Create an .env.example
 - [ ] Maybe try upgrade to typescript again and use ts-syringe to implement dependency injection.
 - [ ] Pull screen logic out into custom hooks to make it basically a view only component.
 - [ ] Add development settings like refresh the database

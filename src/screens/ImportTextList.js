@@ -5,6 +5,7 @@ import { Formik } from "formik";
 import ShoppingItemService from "../services/ShoppingItemService";
 
 const ImportTextList = ({ navigation, route }) => {
+	const shoppingItemService = new ShoppingItemService();
 	const parseListAndAdd = (data, seperator = "\n") => {
 		if (data === "") return false;
 
@@ -18,17 +19,22 @@ const ImportTextList = ({ navigation, route }) => {
 			return false;
 		}
 
-		const shoppingItemService = new ShoppingItemService();
+		// Todo: Refactor this, extract the functionality into a service
+		if(arrData.length > 0){
+			arrData.forEach(async (item, index) => {
+				await shoppingItemService.create(
+					route.params.id,
+					item.trim(),
+					index + route.params.itemQty + 1
+				);
 
-		arrData.forEach(async (item, index) => {
-			await shoppingItemService.create(
-				route.params.id,
-				item.trim(),
-				index + route.params.itemQty + 1
-			);
-		});
-
-		navigation.goBack();
+				if(arrData.length === index + 1){
+					return navigation.goBack();
+				}
+			});
+		}else{
+			navigation.goBack();
+		}
 	};
 
 	return (
@@ -74,5 +80,6 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		marginBottom: 10,
 		paddingHorizontal: 5,
+		color: "#000000"
 	},
 });

@@ -8,7 +8,7 @@ export const dataSource = new DataSource({
 	type: "react-native",
 	database: "shopping_list.sql",
 	location: "default",
-	logging: ["error", "query", "schema"],
+	logging: [], //"error", "query", "schema"
 	entities: [HomeListEntity, ShoppingItemEntity],
 });
 

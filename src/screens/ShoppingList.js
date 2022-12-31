@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { ListItem, Icon } from "@rneui/themed";
 import Swipeable from "react-native-gesture-handler/Swipeable";
@@ -6,6 +6,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import DraggableFlatList from "react-native-draggable-flatlist";
 
 import ShoppingItemService from "../services/ShoppingItemService";
+import Delete from "../components/Swipeable/Delete";
 
 const ShoppingList = ({ route, navigation }) => {
 	const [shoppingItems, setShoppingItems] = useState([]);
@@ -18,14 +19,14 @@ const ShoppingList = ({ route, navigation }) => {
 		setShoppingItems(items);
 	};
 
-	const updateItemsOrder = async (items) => {
+	const updateItemsOrder = (items) => {
 		const newOrder = items.map((item, index) => {
 			return {...item, item_order: index}
 		});
 
 		setShoppingItems(newOrder);
 
-		await shoppingItemService.updateItemsOrderCollection(newOrder);
+		shoppingItemService.updateItemsOrderCollection(newOrder);
 	}
 
 	const updateShoppingItem = async (id) => {
@@ -46,6 +47,8 @@ const ShoppingList = ({ route, navigation }) => {
 		//Sort list based on complete status
 		newList.sort((a, b) => a.complete - b.complete);
 
+		setShoppingItems(newList);
+
 		//Update order numbers
 		let ordered = newList.map((item, index) => {
 			return {...item, item_order: index}
@@ -53,12 +56,10 @@ const ShoppingList = ({ route, navigation }) => {
 
 		ordered.sort((a, b) => a.item_order > b.item_order);
 
-		setShoppingItems(ordered);
-
 		// Todo: Switch out for a loop and update order and complete of each item
-		await shoppingItemService.completeItemById(itemToUpdate.id, itemToUpdate.complete);
+		shoppingItemService.completeItemById(itemToUpdate.id, itemToUpdate.complete);
 
-		await shoppingItemService.updateItemsOrderCollection(ordered);
+		shoppingItemService.updateItemsOrderCollection(ordered);
 	}
 
 	const deleteItem = async (id) => {
@@ -68,8 +69,8 @@ const ShoppingList = ({ route, navigation }) => {
 		setShoppingItems(newItems);
 	};
 
-	useLayoutEffect(() => {
-		navigation.addListener("focus", () => {
+	useEffect(() => {
+		return navigation.addListener("focus", () => {
 			getShoppingItems();
 		});
 	}, []);
@@ -79,17 +80,11 @@ const ShoppingList = ({ route, navigation }) => {
 			key={item.id}
 			onPress={() => navigation.navigate("ShoppingList", { id: item.id })}
 			renderRightActions={() => (
-				<TouchableOpacity
-					style={{
-						backgroundColor: "red",
-						width: 70,
-						alignItems: "center",
-						justifyContent: "center",
+				<Delete
+					onPress={() => {
+						deleteItem(item.id);
 					}}
-					onPress={() => deleteItem(item.id)}
-				>
-					<Text style={{ color: "white" }}>Delete</Text>
-				</TouchableOpacity>
+				/>
 			)}
 		>
 			<ListItem
@@ -119,8 +114,9 @@ const ShoppingList = ({ route, navigation }) => {
 			<DraggableFlatList
 				data={shoppingItems}
 				renderItem={renderItem}
-				keyExtractor={(item, index) => index.toString()}
+				keyExtractor={(item) => item.id}
 				onDragEnd={({ data }) => updateItemsOrder(data)}
+				style={styles.flatList}
 			/>
 		</GestureHandlerRootView>
 	);
@@ -129,10 +125,6 @@ const ShoppingList = ({ route, navigation }) => {
 export default ShoppingList;
 
 const styles = StyleSheet.create({
-	deleteButton: {
-		minHeight: "100%",
-		backgroundColor: "red",
-	},
 	normal: {},
 	strikeThrough: {
 		textDecorationLine: "line-through",
@@ -145,4 +137,7 @@ const styles = StyleSheet.create({
 	sortIcon: {
 		marginRight: 20,
 	},
+	flatList: {
+		height: "97%",
+	}
 });
