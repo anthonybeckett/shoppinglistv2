@@ -63,16 +63,17 @@ sudo xcode-select --switch /Applications/Xcode.app
 - [x] Fix height of lists to not be 100% to stop going into the user zone at the bottom
 - [ ] Fix issue with completing items having a delay to complete and re-order. (Test turning off SQL logging to console)
 - [ ] Add validation and error messages when trying to add blank shopping lists etc
-- [ ] Update .env to set more development/production values
+- [x] Create .env to set more development/production values
 - [x] Create an .env.example
 - [ ] Maybe try upgrade to typescript again and use ts-syringe to implement dependency injection.
 - [ ] Pull screen logic out into custom hooks to make it basically a view only component.
 - [ ] Add development settings like refresh the database
 - [ ] Implement feature & unit testing with jest
 - [ ] Improve migration system
-- [ ] Implement a Makefile to run build commands and other useful options
+- [x] Implement a Makefile to run build commands and other useful options
 - [ ] Implement a new style layout and design
 - [x] Implement a new icon https://aboutreact.com/react-native-change-app-icon/
-- [ ] Create build commands in Makefile to export APK etc https://medium.com/geekculture/react-native-generate-apk-debug-and-release-apk-4e9981a2ea51
+- [x] Create build commands in Makefile to export APK etc https://medium.com/geekculture/react-native-generate-apk-debug-and-release-apk-4e9981a2ea51
+- [ ] Create build tools for iOS in Makefile
 
 
