@@ -8,7 +8,7 @@ export const dataSource = new DataSource({
 	type: "react-native",
 	database: "shopping_list.sql",
 	location: "default",
-	logging: [], //"error", "query", "schema"
+	logging: ["error", "query", "schema"], //"error", "query", "schema"
 	entities: [HomeListEntity, ShoppingItemEntity],
 });
 
@@ -39,6 +39,18 @@ export const runMigrations = async (navigation: NavigationProp<object>) => {
 		item_order INTEGER NOT NULL,
 		created_at DATETIME DEFAULT (datetime('now','localtime'))
 	);`);
+
+	await dataSource.manager.query(`
+		CREATE INDEX IF NOT EXISTS 'idx_listid' ON shopping_items (list_id ASC);
+	`);
+
+	await dataSource.manager.query(`
+		CREATE INDEX IF NOT EXISTS 'idx_complete' ON shopping_items (complete ASC);
+	`);
+
+	await dataSource.manager.query(`
+		CREATE INDEX IF NOT EXISTS 'idx_itemOrder' ON shopping_items (item_order ASC);
+	`);
 
 	await navigation.dispatch(StackActions.replace("Home"));
 };

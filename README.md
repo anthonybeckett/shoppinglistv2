@@ -58,16 +58,19 @@ sudo xcode-select --switch /Applications/Xcode.app
 - [x] Fix refresh when adding items to a shopping list then not appearing
 - [x] Fix bug being able to add empty items to shopping list
 - [x] Fix sorting issue in shopping list glitching ordering
-- [ ] Add Show/Hide completed items icon and give each section little heading
+- [ ] Add Show/Hide completed items icon and give each section little heading.  
+  - Use filters to render lists 
 - [x] Fix text colour when adding items to a shopping menu
 - [x] Fix height of lists to not be 100% to stop going into the user zone at the bottom
-- [ ] Fix issue with completing items having a delay to complete and re-order. (Test turning off SQL logging to console)
+- [x] Fix issue with completing items having a delay to complete and re-order. (Test turning off SQL logging to console)
+- [ ] Fix issue with new items added to list breaking ordering
 - [ ] Add validation and error messages when trying to add blank shopping lists etc
 - [x] Create .env to set more development/production values
 - [x] Create an .env.example
 - [ ] Pull screen logic out into custom hooks to make it basically a view only component.
 - [ ] Implement feature & unit testing with jest
 - [ ] Improve migration system
+- [x] Add indexes to tables to improve performance
 - [x] Implement a Makefile to run build commands and other useful options
 - [ ] Implement a new style layout and design
 - [x] Implement a new icon https://aboutreact.com/react-native-change-app-icon/
