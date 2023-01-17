@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useLayoutEffect, useState} from "react";
 import { StyleSheet, TextInput, View } from "react-native";
 import { Button } from "@rneui/themed";
 import { Formik } from "formik";
 import ShoppingItemService from "../services/ShoppingItemService";
 
 const ImportTextList = ({ navigation, route }) => {
+	const [itemQty, setItemQty] = useState(0);
 	const shoppingItemService = new ShoppingItemService();
 	const parseListAndAdd = (data, seperator = "\n") => {
 		if (data === "") return false;
@@ -25,7 +26,7 @@ const ImportTextList = ({ navigation, route }) => {
 				await shoppingItemService.create(
 					route.params.id,
 					item.trim(),
-					index + route.params.itemQty + 1
+					index + itemQty + 1
 				);
 
 				if(arrData.length === index + 1){
@@ -36,6 +37,18 @@ const ImportTextList = ({ navigation, route }) => {
 			navigation.goBack();
 		}
 	};
+
+	async function fetchItemsQty() {
+		return await shoppingItemService.fetchItemQtyById(route.params.id);
+	}
+
+	async function getItemQty() {
+		setItemQty(await fetchItemsQty());
+	}
+
+	useLayoutEffect(() => {
+		getItemQty();
+	}, []);
 
 	return (
 		<Formik

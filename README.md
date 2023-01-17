@@ -63,7 +63,8 @@ sudo xcode-select --switch /Applications/Xcode.app
 - [x] Fix text colour when adding items to a shopping menu
 - [x] Fix height of lists to not be 100% to stop going into the user zone at the bottom
 - [x] Fix issue with completing items having a delay to complete and re-order. (Test turning off SQL logging to console)
-- [ ] Fix issue with new items added to list breaking ordering
+- [x] Fix issue with new items added to list breaking ordering
+  - ItemQty logic needs moving into correct place
 - [ ] Add validation and error messages when trying to add blank shopping lists etc
 - [x] Create .env to set more development/production values
 - [x] Create an .env.example
