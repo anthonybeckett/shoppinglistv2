@@ -111,13 +111,24 @@ const ShoppingList = ({ route, navigation }) => {
 
 	return (
 		<GestureHandlerRootView>
+			<Text style={[styles.splitHeaders, styles.splitHeadersIncomplete]}>Items</Text>
 			<DraggableFlatList
-				data={shoppingItems}
+				data={shoppingItems.filter(item => item.complete !== 1)}
 				renderItem={renderItem}
 				keyExtractor={(item) => item.id}
 				onDragEnd={({ data }) => updateItemsOrder(data)}
-				style={styles.flatList}
+				style={styles.flatListIncomplete}
 			/>
+
+			{/*<Text style={[styles.splitHeaders, styles.splitHeadersComplete]}>Completed</Text>*/}
+			{/*<DraggableFlatList*/}
+			{/*	data={shoppingItems.filter(item => item.complete === 1)}*/}
+			{/*	renderItem={renderItem}*/}
+			{/*	keyExtractor={(item) => item.id + "_completed"}*/}
+			{/*	onDragEnd={({ data }) => updateItemsOrder(data)}*/}
+			{/*	style={styles.flatListComplete}*/}
+			{/*/>*/}
+
 		</GestureHandlerRootView>
 	);
 };
@@ -137,7 +148,24 @@ const styles = StyleSheet.create({
 	sortIcon: {
 		marginRight: 20,
 	},
-	flatList: {
-		height: "97%",
-	}
+	flatListIncomplete: {
+		//height: "55%"
+		height: "90%"
+	},
+	flatListComplete: {
+		height: "30%",
+	},
+	splitHeaders: {
+		fontWeight: "400",
+		paddingTop: 5,
+		paddingBottom: 5,
+		paddingLeft: 10,
+		fontSize: 16
+	},
+	splitHeadersIncomplete: {
+		color: "blue"
+	},
+	splitHeadersComplete: {
+		color: "green"
+	},
 });
